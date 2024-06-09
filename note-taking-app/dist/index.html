@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Note Taking App</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note-taking App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E8EBE4;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #798071;
+        }
+
+        #noteInput {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #B8BACF;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #noteList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .noteItem {
+            background-color: #D2D5DD;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .noteItem button {
+            background-color: #798071;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .noteItem button:hover {
+            background-color: #999AC6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Note-taking App</h1>
+    <div id="noteInput">
+        <textarea id="noteContent" rows="4" placeholder="Write your note here..."></textarea>
+        <button onclick="addNote()">Add Note</button>
+    </div>
+    <ul id="noteList"></ul>
+
+    <script>
+        function addNote() {
+            const noteContent = document.getElementById('noteContent').value;
+            if (noteContent.trim() === '') {
+                alert('Please enter a note.');
+                return;
+            }
+
+            const noteList = document.getElementById('noteList');
+            const li = document.createElement('li');
+            li.className = 'noteItem';
+            li.textContent = noteContent;
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                noteList.removeChild(li);
+            };
+            li.appendChild(deleteButton);
+            noteList.appendChild(li);
+
+            // Clear the textarea after adding the note
+            document.getElementById('noteContent').value = '';
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
